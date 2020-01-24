@@ -2,7 +2,6 @@
 <template>
   <div id="app">
     <login></login>
-    <button @click="login">跳转</button>
   </div>
 </template>
 
@@ -37,9 +36,6 @@ export default {
   //方法集合
   methods: {
     login(){
-      console.log("_____")
-      console.log(this.$route)
-      console.log("______")
       this.$router.push('/member')
     }
   },
@@ -61,9 +57,7 @@ export default {
 };
 </script>
 <style scoped>
-.body {
-  width: 300px;
-  background-color: red;
-  height: 400px;
-}
+  #app{
+    height: 100%;
+  }
 </style>

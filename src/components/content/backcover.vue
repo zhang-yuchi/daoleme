@@ -1,15 +1,9 @@
-<!-- 登录 -->
+<!--  -->
 <template>
-  <div class="login-page">
-    <cover></cover>
-    <div class="logo">
-        <img src="../assets/img/logo.png" alt="">
-        <span class="logo-text">到了么</span>
-    </div>
-    
-    <div class="login-controls">
-      <mybtn class="btn" color="rgba(0,0,0,0)" fontColor="rgb(255,255,255)" content="注册"></mybtn>
-      <mybtn class="btn" color="white" fontColor="rgb(69,108,229)" content="登录"></mybtn>
+  <div class="cover">
+    <div class="bgc"></div>
+    <div class="bgimg">
+      <img src="../../assets/img/bgc.png" alt />
     </div>
   </div>
 </template>
@@ -17,14 +11,10 @@
 <script>
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
-import cover from "../components/content/backcover"
-import mybtn from "../components/content/button";
+
 export default {
   //import引入的组件需要注入到对象中才能使用
-  components: {
-    mybtn,
-    cover
-  },
+  components: {},
   data() {
     //这里存放数据
     return {};
@@ -50,43 +40,31 @@ export default {
 };
 </script>
 <style scoped>
-.login-page {
-  /* background-color: rgba(69, 108, 229); */
+.cover {
+  /* position: relative; */
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bgc {
   height: 100%;
   width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(69, 108, 229);
+  z-index: -1;
 }
-.login-controls {
-  position: fixed;
+.bgimg {
+  /* width: 100%; */
+  /* height: 400px; */
+  opacity: 0.2;
+  position: absolute;
   bottom: 0;
-  width: 100%;
-  text-align: center;
-  height: 100px;
-  z-index: 999;
+  z-index: 1;
+  left: 0;
 }
-.btn:first-of-type {
-  margin-right: 10px;
-}
-.btn:last-of-type {
-  margin-left: 10px;
-}
-.logo{
-    position: absolute;
-    left: 50%;
-    top: 30%;
-    transform: translate(-50%,-50%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-}
-.logo img{
-    margin-bottom: 15px;
-    width: 70px;
-}
-.logo-text{
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-}
+
 </style>

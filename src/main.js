@@ -4,8 +4,12 @@ import router from './router'
 import store from './store'
 import meta from './vue-meta'
 import "lib-flexible"
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+import './assets/css/normalize.css'
+import './assets/css/app.css'
 Vue.config.productionTip = false
-
+Vue.use(ElementUI)
 new Vue({
   router,
   store,
