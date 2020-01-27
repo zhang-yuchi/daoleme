@@ -1,7 +1,7 @@
 <!--  -->
 <template>
-<div class='button' @click="callback" :style="style">
-    <span class="correct">{{content}}</span>
+<div class='register'>
+    <button @click="back">点击跳转</button>
 </div>
 </template>
 
@@ -12,36 +12,29 @@
 export default {
 //import引入的组件需要注入到对象中才能使用
 components: {},
-props:{
-    color:String,
-    fontColor:{
-        type:String,
-        default:"blue"
-    },
-    content:String,
-    callback:Function
-},
 data() {
 //这里存放数据
 return {
-    
+
 };
 },
 //监听属性 类似于data概念
 computed: {
-    style(){
-        return {
-            background:this.color,
-            color:this.fontColor,
-            content:this.content
-        }
+    parent(){
+        return this.$parent.$parent.$parent
     }
 },
 //监控data中的数据变化
 watch: {},
 //方法集合
 methods: {
-    
+    back(){
+        // this.$router.replace('/welcome')
+        this.parent.jump = "1"
+        setTimeout(()=>{
+            this.$router.replace('/welcome')
+        },300)
+    }
 },
 //生命周期 - 创建完成（可以访问当前this实例）
 created() {
@@ -62,19 +55,10 @@ deactivated() {}, //如果有keep-alive缓存功能,当该页面撤销使这个�
 }
 </script>
 <style scoped>
-
-    .button{
-        border: 1px solid rgb(149, 165, 212);
-        display: inline-block;
-        font-size: 16px;
-        font-weight: bold;
-        width: 120px;
-        line-height: 50px;
-        text-align: center;
-        transform: skew(-20deg)
-    }
-    .correct{
-        transform: skew(20deg);
-        display: inline-block;
+    .register{
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        z-index: 2;
     }
 </style>

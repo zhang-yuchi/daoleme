@@ -1,17 +1,19 @@
 <!-- 登录 -->
 <template>
-  <div class="login-page">
+  <navi :navi="jump" ref="root">
+    <div class="login-page">
     <cover></cover>
     <div class="logo">
         <img src="../assets/img/logo.png" alt="">
         <span class="logo-text">到了么</span>
     </div>
-    
     <div class="login-controls">
-      <mybtn class="btn" color="rgba(0,0,0,0)" fontColor="rgb(255,255,255)" content="注册"></mybtn>
-      <mybtn class="btn" color="white" fontColor="rgb(69,108,229)" content="登录"></mybtn>
+      <mybtn class="btn" :callback="register" color="rgba(0,0,0,0)" fontColor="rgb(255,255,255)" content="注册"></mybtn>
+      <mybtn class="btn" :callback="login" color="white" fontColor="rgb(69,108,229)" content="登录"></mybtn>
     </div>
   </div>
+  </navi>
+  
 </template>
 
 <script>
@@ -19,26 +21,43 @@
 //例如：import 《组件名称》 from '《组件路径》';
 import cover from "../components/content/backcover"
 import mybtn from "../components/content/button";
+import navi from "../components/content/navigate"
+// import move from "../components/content/animate"
 export default {
   //import引入的组件需要注入到对象中才能使用
   components: {
     mybtn,
-    cover
+    cover,
+    // move,
+    navi,
   },
   data() {
     //这里存放数据
-    return {};
+    return {
+      jump:"1",//根目录必须要有这个属性
+    };
   },
   //监听属性 类似于data概念
   computed: {},
   //监控data中的数据变化
   watch: {},
   //方法集合
-  methods: {},
+  methods: {
+    login(){
+      this.jump = "0"
+      this.$router.push('/welcome/login')
+    },
+    register(){
+      this.jump='0'
+      this.$router.push('/welcome/register')
+    }
+  },
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {},
   //生命周期 - 挂载完成（可以访问DOM元素）
-  mounted() {},
+  mounted() {
+    
+  },
   beforeCreate() {}, //生命周期 - 创建之前
   beforeMount() {}, //生命周期 - 挂载之前
   beforeUpdate() {}, //生命周期 - 更新之前
@@ -54,6 +73,7 @@ export default {
   /* background-color: rgba(69, 108, 229); */
   height: 100%;
   width: 100%;
+  z-index: 10;
 }
 .login-controls {
   position: fixed;
@@ -61,7 +81,6 @@ export default {
   width: 100%;
   text-align: center;
   height: 100px;
-  z-index: 999;
 }
 .btn:first-of-type {
   margin-right: 10px;

@@ -1,47 +1,61 @@
 <!--  -->
 <template>
-  <div id="app">
-    <router-view/>
+  <div class="animate" :style="backVal">
+    <slot></slot>
   </div>
 </template>
 
 <script>
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
-import login from "./views/index"
+
 export default {
   //import引入的组件需要注入到对象中才能使用
-  components: {
-    login,
-  },
-  metaInfo: {
-    title: "到了么",
-    meta: [
-      { charset: "utf-8" },
-      {
-        name: "viewport",
-        content:
-          "width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
-      }
-    ]
+  components: {},
+  props: {
+    back: String
   },
   data() {
     //这里存放数据
-    return {};
+    return {
+      move: {
+        // transform: "translateX(" + this.backVal + "%" + ")"
+      }
+    };
   },
   //监听属性 类似于data概念
-  computed: {},
+  computed: {
+    backVal: {
+      set(datas) {
+        if (datas.back == "0") {
+          datas.move = {
+            transform: "translateX(" + 0 + "%" + ")"
+          };
+        } else {
+          datas.move = {
+            transform: "translateX(" + 100 + "%" + ")"
+          };
+        }
+      },
+      get(){
+          if (this.back == "0") {
+          return {
+            transform: "translateX(" + 0 + "%" + ")"
+          };
+        } else {
+          return {
+            transform: "translateX(" + 100 + "%" + ")"
+          };
+        }
+      }
+    }
+  },
   //监控data中的数据变化
   watch: {},
   //方法集合
-  methods: {
-
-  },
+  methods: {},
   //生命周期 - 创建完成（可以访问当前this实例）
-  created() {
-    this.$route.meta.identify = "member"
-    console.log(this.$route)
-  },
+  created() {},
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
   beforeCreate() {}, //生命周期 - 创建之前
@@ -55,8 +69,11 @@ export default {
 };
 </script>
 <style scoped>
-  #app{
-    height: 100%;
-
-  }
+.animate {
+  position: absolute;
+  top: 0;
+  transition: 0.3s;
+  width: 100%;
+  height: 100%;
+}
 </style>
