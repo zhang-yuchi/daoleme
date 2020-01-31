@@ -10,69 +10,49 @@ const routes = [{
   },
   {
     path: "/welcome",
-    meta: {
-      index: 1
-    },
     component: () => import('../views/index.vue'),
-    children: [{
-        path: "login",
-        meta: {
-          index: 2
-        },
-        component: () => import('../views/login/login')
-      },
-      {
-        path: "register",
-        meta: {
-          index: 2,
-        },
-        component: () => import('../views/login/register')
-      },
-    ]
+  
+    
   },
   {
-    path: "/member",
-    component: () => import('../views/member/index.vue'), //放导航
-    children: [{
-        path: "action",
-        component: () => import('../views/member/action/action.vue')
-      },
-      {
-        path: "profile",
-        component: () => import('../views/member/profile/profile.vue')
-      }
-    ]
+    path: "/login",
+    component: () => import('../views/login/login')
   },
   {
-    path: "/organizer",
-    component: () => import('../views/organizer/index.vue'),
-    children: [{
-        path: 'action',
-        component: () => import('../views/organizer/action/action.vue')
-      },
-      {
-        path: 'profile',
-        component: () => import('../views/organizer/profile/profile.vue')
-      },
-    ]
-  }
+    path: "/register",
+    component: () => import('../views/login/register')
+  },
+  {
+    path:"/action",
+    component:()=>import("../views/main/action.vue"),
+    children:[{
+      path:"condition",
+      component:()=>import('../views/main/action-condition.vue')
+    },{
+      path:"details",
+      component:()=>import('../views/main/action-details.vue')
+    }]
+  },
+  {
+    path:"/feedback",
+    component:()=>import('../views/main/feedback')
+  },
+  {
+    path:"/group",
+    component:()=>import('../views/main/group')
+  },
+  {
+    path:"/msgupdate",
+    component:()=>import('../views/main/msgupdate')
+  },
+  {
+    path: "/profile",
+    component: () => import('../views/member/profile/profile.vue')
+  },
 ]
 
 const router = new VueRouter({
   routes
 })
-router.beforeEach((to, from, next) => {
-  console.log(to)
-  if (to.meta.index > from.meta.index) {
-    setTimeout(function () {
-      next()
-    })
-  } else {
-    next()
-  }
 
-
-
-
-})
 export default router

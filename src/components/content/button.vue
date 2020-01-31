@@ -1,4 +1,4 @@
-<!--  -->
+<!-- 倾斜样式button -->
 <template>
 <div class='button' @click="callback" :style="style">
     <span class="correct">{{content}}</span>

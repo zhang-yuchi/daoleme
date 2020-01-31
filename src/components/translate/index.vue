@@ -1,7 +1,9 @@
-<!--  -->
+<!-- 一个page 都在这里 -->
 <template>
-<div class='register'>
-    <button @click="back">点击跳转</button>
+<div class='page'>
+    <transition name="slide-fade">
+      <router-view/>
+    </transition>
 </div>
 </template>
 
@@ -19,16 +21,12 @@ return {
 };
 },
 //监听属性 类似于data概念
-computed: {
-    
-},
+computed: {},
 //监控data中的数据变化
 watch: {},
 //方法集合
 methods: {
-    back(){
-        this.$router.go(-1)
-    }
+
 },
 //生命周期 - 创建完成（可以访问当前this实例）
 created() {
@@ -39,7 +37,9 @@ mounted() {
 
 },
 beforeCreate() {}, //生命周期 - 创建之前
-beforeMount() {}, //生命周期 - 挂载之前
+beforeMount() {
+
+}, //生命周期 - 挂载之前
 beforeUpdate() {}, //生命周期 - 更新之前
 updated() {}, //生命周期 - 更新之后
 beforeDestroy() {}, //生命周期 - 销毁之前
@@ -49,11 +49,22 @@ deactivated() {}, //如果有keep-alive缓存功能,当该页面撤销使这个�
 }
 </script>
 <style scoped>
-    .register{
-        position: relative;
-        width: 100%;
-        height: 100%;
-        background-color: white;
-        z-index: 2;
-    }
+.page{
+    z-index: -1;
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+  .slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .3s ease;
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active for below version 2.1.8 */ {
+  transform: translateX(100%);
+  opacity: 0;
+}
 </style>

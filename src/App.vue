@@ -1,7 +1,7 @@
-<!--  -->
+<!-- 主页 -->
 <template>
   <div id="app">
-    <router-view/>
+      <router-view></router-view>
   </div>
 </template>
 
@@ -39,8 +39,7 @@ export default {
   },
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {
-    this.$route.meta.identify = "member"
-    console.log(this.$route)
+
   },
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
@@ -59,4 +58,5 @@ export default {
     height: 100%;
 
   }
+
 </style>

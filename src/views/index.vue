@@ -1,6 +1,5 @@
 <!-- 登录 -->
 <template>
-  <navi :navi="jump" ref="root">
     <div class="login-page">
     <cover></cover>
     <div class="logo">
@@ -12,8 +11,6 @@
       <mybtn class="btn" :callback="login" color="white" fontColor="rgb(69,108,229)" content="登录"></mybtn>
     </div>
   </div>
-  </navi>
-  
 </template>
 
 <script>
@@ -21,20 +18,17 @@
 //例如：import 《组件名称》 from '《组件路径》';
 import cover from "../components/content/backcover"
 import mybtn from "../components/content/button";
-import navi from "../components/content/navigate"
 // import move from "../components/content/animate"
 export default {
   //import引入的组件需要注入到对象中才能使用
   components: {
     mybtn,
     cover,
-    // move,
-    navi,
   },
   data() {
     //这里存放数据
     return {
-      jump:"1",//根目录必须要有这个属性
+      
     };
   },
   //监听属性 类似于data概念
@@ -44,19 +38,17 @@ export default {
   //方法集合
   methods: {
     login(){
-      this.jump = "0"
-      this.$router.push('/welcome/login')
+      this.$router.push('/login')
     },
     register(){
-      this.jump='0'
-      this.$router.push('/welcome/register')
+      this.$router.push('/register')
     }
   },
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {},
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
-    
+
   },
   beforeCreate() {}, //生命周期 - 创建之前
   beforeMount() {}, //生命周期 - 挂载之前

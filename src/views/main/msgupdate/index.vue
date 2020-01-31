@@ -1,8 +1,6 @@
 <!--  -->
 <template>
-<div class='register'>
-    <button @click="back">点击跳转</button>
-</div>
+<div class=''></div>
 </template>
 
 <script>
@@ -19,16 +17,12 @@ return {
 };
 },
 //监听属性 类似于data概念
-computed: {
-    
-},
+computed: {},
 //监控data中的数据变化
 watch: {},
 //方法集合
 methods: {
-    back(){
-        this.$router.go(-1)
-    }
+
 },
 //生命周期 - 创建完成（可以访问当前this实例）
 created() {
@@ -49,11 +43,5 @@ deactivated() {}, //如果有keep-alive缓存功能,当该页面撤销使这个�
 }
 </script>
 <style scoped>
-    .register{
-        position: relative;
-        width: 100%;
-        height: 100%;
-        background-color: white;
-        z-index: 2;
-    }
+
 </style>
