@@ -1,6 +1,6 @@
 <!--  -->
 <template>
-<div class=''></div>
+<div class=''>123</div>
 </template>
 
 <script>
@@ -13,7 +13,7 @@ components: {},
 data() {
 //这里存放数据
 return {
-    
+
 };
 },
 //监听属性 类似于data概念
