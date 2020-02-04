@@ -1,7 +1,10 @@
-<!-- 主页 -->
+<!--  -->
 <template>
-  <div id="app">
-      <router-view></router-view>
+  <div class="cover">
+    <div class="bgc"></div>
+    <div class="bgimg">
+      <img src="../../assets/img/bgc.png" alt />
+    </div>
   </div>
 </template>
 
@@ -11,20 +14,7 @@
 
 export default {
   //import引入的组件需要注入到对象中才能使用
-  components: {
-
-  },
-  metaInfo: {
-    title: "到了么",
-    meta: [
-      { charset: "utf-8" },
-      {
-        name: "viewport",
-        content:
-          "width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
-      }
-    ]
-  },
+  components: {},
   data() {
     //这里存放数据
     return {};
@@ -34,13 +24,9 @@ export default {
   //监控data中的数据变化
   watch: {},
   //方法集合
-  methods: {
-
-  },
+  methods: {},
   //生命周期 - 创建完成（可以访问当前this实例）
-  created() {
-
-  },
+  created() {},
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
   beforeCreate() {}, //生命周期 - 创建之前
@@ -54,9 +40,33 @@ export default {
 };
 </script>
 <style scoped>
-  #app{
-    height: 100%;
+.cover {
+  /* position: relative; */
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow:hidden;
+}
 
-  }
+.bgc {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(69, 108, 229);
+  z-index: -1;
+}
+.bgimg {
+  /* width: 100%; */
+  /* height: 400px; */
+  opacity: 0.2;
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+  left: 0;
+}
 
 </style>
